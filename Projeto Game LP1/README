@@ -1,0 +1,194 @@
+# Never Back Home
+
+## Descrição do Projeto
+
+"Never Back Home" é um jogo desenvolvido utilizando a biblioteca SFML (Simple and Fast Multimedia Library). O jogo envolve a defesa de uma base contra invasores, utilizando projéteis e defensores. Este projeto é um exemplo de como utilizar a SFML para criar um jogo 2D com gráficos, animações e interações básicas.
+
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte forma:
+
+- **src/**: Contém os arquivos de código-fonte (.cpp).
+  - `Projectile.cpp`: Implementação da classe `Projectile`, que representa um projétil no jogo.
+  - `Defender.cpp`: Implementação da classe `Defender`, que representa um defensor no jogo.
+  - `Menu.cpp`: Implementação da classe `Menu`, que gerencia o menu do jogo.
+  - `Base.cpp`: Implementação da classe `Base`, que representa a base a ser defendida.
+  - `Drop.cpp`: Implementação da classe `Drop`, que representa itens que podem ser coletados.
+  - `Game.cpp`: Implementação da classe `Game`, que gerencia o loop principal do jogo.
+  - `Outsider.cpp`: Implementação da classe `Outsider`, que representa os invasores.
+- **include/**: Contém os arquivos de cabeçalho (.hpp).
+  - `Projectile.hpp`: Declaração da classe `Projectile`.
+  - `Defender.hpp`: Declaração da classe `Defender`.
+  - `Menu.hpp`: Declaração da classe `Menu`.
+  - `Base.hpp`: Declaração da classe `Base`.
+  - `Drop.hpp`: Declaração da classe `Drop`.
+  - `Game.hpp`: Declaração da classe `Game`.
+  - `Outsider.hpp`: Declaração da classe `Outsider`.
+- **obj/**: Contém os arquivos objeto (.o) gerados durante a compilação.
+- **bin/**: Contém o executável final.
+- **Makefile**: Arquivo de construção que define como compilar e vincular o projeto.
+- **README.md**: Documento que descreve o projeto, suas funcionalidades e como compilá-lo e executá-lo.
+
+## Arquivos Principais
+
+- **Defender.hpp**: Define a classe `Defender`, que representa o personagem controlado pelo jogador. Inclui métodos para atualizar o estado do defensor, atirar projéteis, gerenciar saúde e mana, e verificar se o defensor está vivo.
+- **Menu.hpp**: Define funções para configurar textos, verificar se o mouse está sobre um texto, e exibir menus para seleção de cenário e personagem.
+- **Base.hpp**: Define a classe `Base`, que representa a base que o defensor deve proteger. Inclui métodos para gerenciar a saúde da base e verificar sua posição.
+- **Drop.hpp**: Define a classe `Drop`, que representa itens que podem ser coletados pelo defensor, como saúde e mana.
+- **Game.hpp**: Define a classe `Game`, que contém a lógica principal do jogo, incluindo inicialização, atualização, renderização, e gerenciamento de eventos.
+- **Projectile.hpp**: Define a classe `Projectile`, que representa os projéteis disparados pelo defensor e pelos inimigos. Inclui métodos para atualizar a posição do projétil, verificar colisões e determinar se o projétil deve ser removido.
+- **Outsider.hpp**: Define a classe `Outsider`, que representa os inimigos no jogo. Inclui métodos para mover os inimigos, verificar colisões, atirar projéteis e gerenciar a saúde dos inimigos.
+
+## Funcionalidades
+
+### Defender
+
+A classe `Defender` possui as seguintes funcionalidades principais:
+
+- **Construtores**: Inicializa o defensor com uma posição e texturas específicas.
+- **update**: Atualiza o estado do defensor com base no tempo decorrido e nas entradas do jogador.
+- **shoot**: Permite que o defensor atire projéteis em direção a um alvo.
+- **getHealth / setHealth**: Obtém e define a saúde do defensor.
+- **getMana / addMana**: Obtém e adiciona mana ao defensor.
+- **reload**: Recarrega a munição do defensor.
+- **takeDamage**: Aplica dano ao defensor.
+- **isAlive**: Verifica se o defensor ainda está vivo.
+
+### Menu
+
+As funções no arquivo `Menu.hpp` incluem:
+
+- **configureText**: Configura as propriedades de um texto SFML, como fonte, tamanho, cor de preenchimento e contorno.
+- **isMouseOverText**: Verifica se o mouse está sobre um texto específico.
+- **showMenu**: Exibe o menu principal do jogo.
+- **selectScenario**: Permite ao jogador selecionar um cenário.
+- **selectCharacter**: Permite ao jogador selecionar um personagem.
+
+### Base
+
+A classe `Base` possui as seguintes funcionalidades principais:
+
+- **Construtores**: Inicializa a base com uma posição e saúde específicas.
+- **getPosition**: Obtém a posição da base.
+- **getSprite**: Obtém o sprite da base.
+- **getHealth**: Obtém a saúde da base.
+- **takeDamage**: Aplica dano à base.
+
+### Drop
+
+A classe `Drop` possui as seguintes funcionalidades principais:
+
+- **Construtor**: Inicializa um drop com um tipo específico (saúde ou mana) e uma posição.
+- **getType**: Obtém o tipo do drop.
+- **getSprite**: Obtém o sprite do drop.
+- **isMarkedForRemoval**: Verifica se o drop deve ser removido.
+- **update**: Atualiza o estado do drop.
+- **draw**: Desenha o drop na janela do jogo.
+- **getBounds**: Obtém os limites do drop para verificação de colisão.
+- **getRandomDropType**: Obtém um tipo de drop aleatório.
+
+### Game
+
+A classe `Game` possui as seguintes funcionalidades principais:
+
+- **Construtores**: Inicializa o jogo com um cenário e defensor específicos.
+- **run**: Executa o loop principal do jogo.
+- **processEvents**: Processa eventos de entrada do jogador.
+- **update**: Atualiza o estado do jogo com base no tempo decorrido.
+- **render**: Renderiza os elementos do jogo na janela.
+- **handleCollisions**: Lida com colisões entre diferentes elementos do jogo.
+- **spawnOutsider**: Gera novos inimigos no jogo.
+- **checkCollision**: Verifica colisões entre sprites.
+- **loadTexture**: Carrega uma textura a partir de um arquivo.
+- **configureText**: Configura as propriedades de um texto SFML.
+- **checkEndGameConditions**: Verifica as condições de fim de jogo.
+- **checkGameOver**: Verifica se o jogo acabou.
+
+### Projectile
+
+A classe `Projectile` possui as seguintes funcionalidades principais:
+
+- **Construtor**: Inicializa um projétil com uma posição inicial, posição alvo, textura e velocidade.
+- **update**: Atualiza a posição do projétil com base no tempo decorrido.
+- **getBounds**: Obtém os limites do projétil para verificação de colisão.
+- **getSprite**: Obtém o sprite do projétil.
+- **isInBounds**: Verifica se o projétil ainda está dentro dos limites da janela.
+- **markForRemoval**: Marca o projétil para remoção.
+- **isMarkedForRemoval**: Verifica se o projétil está marcado para remoção.
+
+### Outsider
+
+A classe `Outsider` possui as seguintes funcionalidades principais:
+
+- **Construtor**: Inicializa um inimigo com uma textura específica.
+- **setRandomPositionOnEdge**: Define uma posição aleatória para o inimigo nas bordas da janela.
+- **moveTowards**: Move o inimigo em direção a um alvo.
+- **draw**: Desenha o inimigo na janela do jogo.
+- **getBounds**: Obtém os limites do inimigo para verificação de colisão.
+- **getSprite**: Obtém o sprite do inimigo.
+- **takeDamage**: Aplica dano ao inimigo.
+- **isDead**: Verifica se o inimigo está morto.
+- **canShoot**: Verifica se o inimigo pode atirar.
+- **resetShootClock**: Reseta o relógio de tiro do inimigo.
+- **getShootInterval**: Obtém o intervalo de tempo entre os tiros do inimigo.
+- **shoot**: Permite que o inimigo atire projéteis em direção a um alvo.
+- **markForRemoval**: Marca o inimigo para remoção.
+- **isMarkedForRemoval**: Verifica se o inimigo está marcado para remoção.
+
+## Compilação e Execução
+
+Para compilar e executar o projeto, siga os passos abaixo:
+
+1. **Instale as dependências**: Certifique-se de que a biblioteca SFML está instalada no seu sistema. Em uma distribuição baseada em Debian, você pode instalar a SFML com o seguinte comando:
+    ```sh
+    sudo apt-get install libsfml-dev
+    ```
+
+2. **Compile o projeto**: Navegue até o diretório raiz do projeto e execute o comando `make` para compilar o projeto.
+    ```sh
+    make
+    ```
+
+3. **Execute o jogo**: Após a compilação, o executável será gerado no diretório `bin`. Execute o jogo com o seguinte comando:
+    ```sh
+    ./bin/never_back_home
+    ```
+
+4. **Limpe os arquivos de compilação**: Para remover os arquivos objeto e o executável, execute o comando `make clean`.
+    ```sh
+    make clean
+    ```
+
+## Detalhes da Jogabilidade
+- **Defensores**: O jogador pode posicionar diferentes tipos de defensores, movimentando-o ao redor da base e atirando contra os invasores. Cada defensor tem tabanho diferente, o que influencia na dificuldade.
+- **Projéteis**: Os defensores disparam projéteis para atacar os invasores.
+- **Invasores**: Os invasores vêm em ondas e tentam alcancar a Base, com objetivo de voltar para seu mundo, você com bom defensor maligno deve impedi-los.
+- **Itens Coletáveis**: Durante o jogo, itens podem ser coletados para fornecer municao ou saúde extra ao defensor.
+- **Menu**: O jogo possui um menu onde o jogador pode iniciar o jogo, escolher o cenario da aventura do dia, e o defensor.
+- **Movimentacão**: teclas W(cima),S(baixo),A(esquerda)e D(direita). Atirar: click esquerdo atira na direcão do ponteiro do mouse.
+- **Colisões implementadas**:
+  - **Defensor vs. Invasor**:
+    - Quando um defensor entra em contato com um invasor:
+      - O defensor perde vida.
+      - O invasor é removido.
+  - **Projétil do Defensor vs. Invasor**:
+    - Quando um projétil disparado por um defensor atinge um invasor:
+      - Pode gerar um item (Drop).
+  - **Projétil do Invasor vs. Projétil do Invasor**:
+    - Quando projéteis disparados por invasores colidem entre si:
+      - Pode gerar um item (Drop).
+  - **Defensor vs. Drop**:
+    - Quando um defensor coleta um item (Drop):
+      - Ele pode receber vida ou municao(mana).
+  - **Invasor vs. Base**:
+    - Quando um invasor atinge a base:
+      - A barra de progresso de retorno para casa aumenta.
+
+- **Condicão de Vitoria/Derrota**(cada uma com final diferente apresentado na tela): 
+        - Saúde do defensor chegar a 0;
+        - Progresso chegar a 100%; ou 
+        - Decurso de tempo(120s). cada uma com final diferente apresentado na tela.
+
+        Link do video de demonstracao:
+        
+        https://drive.google.com/file/d/1TVEWD0C6QQEH61pk33GaAqPfoDbc4ty-/view?usp=drive_link
