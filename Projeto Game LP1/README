@@ -29,16 +29,6 @@ O projeto está organizado da seguinte forma:
 - **Makefile**: Arquivo de construção que define como compilar e vincular o projeto.
 - **README.md**: Documento que descreve o projeto, suas funcionalidades e como compilá-lo e executá-lo.
 
-## Arquivos Principais
-
-- **Defender.hpp**: Define a classe `Defender`, que representa o personagem controlado pelo jogador. Inclui métodos para atualizar o estado do defensor, atirar projéteis, gerenciar saúde e mana, e verificar se o defensor está vivo.
-- **Menu.hpp**: Define funções para configurar textos, verificar se o mouse está sobre um texto, e exibir menus para seleção de cenário e personagem.
-- **Base.hpp**: Define a classe `Base`, que representa a base que o defensor deve proteger. Inclui métodos para gerenciar a saúde da base e verificar sua posição.
-- **Drop.hpp**: Define a classe `Drop`, que representa itens que podem ser coletados pelo defensor, como saúde e mana.
-- **Game.hpp**: Define a classe `Game`, que contém a lógica principal do jogo, incluindo inicialização, atualização, renderização, e gerenciamento de eventos.
-- **Projectile.hpp**: Define a classe `Projectile`, que representa os projéteis disparados pelo defensor e pelos inimigos. Inclui métodos para atualizar a posição do projétil, verificar colisões e determinar se o projétil deve ser removido.
-- **Outsider.hpp**: Define a classe `Outsider`, que representa os inimigos no jogo. Inclui métodos para mover os inimigos, verificar colisões, atirar projéteis e gerenciar a saúde dos inimigos.
-
 ## Funcionalidades
 
 ### Defender
